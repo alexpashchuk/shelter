@@ -1,0 +1,61 @@
+/* Header */
+
+.header.pets-header {
+    top: 30px;
+}
+
+.logo-title {
+    color: var(--color-dark-l);
+    margin: 2px 0 12px 0;
+}
+
+.logo-subtitle {
+    color: var(--color-dark-3xl);
+}
+
+.menu-list a {
+    color: var(--color-dark-l);
+}
+
+.menu-list a:hover {
+    color: var(--color-dark-3xl);
+}
+
+.menu-list a.active-link {
+    color: var(--color-dark-3xl);
+}
+
+.burger {
+    border-top: var(--dark-border);
+    border-bottom: var(--dark-border);
+}
+
+.burger::after {
+    border-top: var(--dark-border);
+}
+
+/* Our friends Pagination*/
+
+.our-friends-content {
+    margin-top: 120px;
+}
+
+.our-friends-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 40px;
+    row-gap: 30px;
+}
+
+.our-friends-pagination {
+    display: flex;
+    gap: 20px;
+}
+
+button.current,
+button.current:hover {
+    cursor: default;
+    background-color: var(--color-primary);
+    color: var(--color-dark-3xl);
+    border: 2px solid var(--color-primary);
+}

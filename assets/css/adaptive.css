@@ -1,0 +1,200 @@
+@media (max-width: 1279px) {
+    .container {
+        padding: 80px 30px 100px 30px;
+    }
+
+    .header-content {
+        padding: 0 30px;
+    }
+
+    .not-only-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 100px;
+        padding: 150px 20px 0 20px;
+    }
+
+    .not-only-text {
+        margin-top: 0;
+    }
+
+    .not-only-img {
+        max-width: 569px;
+    }
+
+    .about-content {
+        flex-direction: column-reverse;
+        gap: 80px;
+    }
+
+    .slider {
+        gap: 16px;
+    }
+
+    .slider-wrapper {
+        width: 580px;
+    }
+
+    .slider-carousel {
+        left: -580px;
+    }
+
+    .slider-slide {
+        gap: 40px;
+    }
+
+    .card-right {
+        display: none;
+    }
+
+    .help-list > div {
+        width: 170px;
+    }
+
+    .help-list {
+        max-width: 1030px;
+    }
+
+    .our-friends-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .donation-content {
+        flex-direction: column-reverse;
+        gap: 60px;
+    }
+
+    .footer-content {
+        max-width: 900px;
+        padding-top: 30px;
+        gap: 60px;
+    }
+}
+
+@media (max-width: 767px) {
+    h2,
+    h3 {
+        font-size: 25px;
+        text-align: center;
+    }
+
+    .container {
+        padding: 42px 10px 42px 10px;
+    }
+
+    .header-content {
+        padding: 0 30px;
+    }
+
+    .header-content {
+        padding-left: 10px;
+        padding-right: 53px;
+    }
+
+    .burger {
+        display: block;
+    }
+
+    .burger.rotate {
+        transform: rotate(90deg);
+    }
+
+    .menu {
+        position: fixed;
+        width: 320px;
+        height: 100vh;
+        top: 0;
+        right: -350px;
+        background-color: var(--color-dark-3xl);
+        transition: right 0.4s ease-in-out;
+        z-index: 20;
+    }
+
+    .menu.pets-page {
+        background-color: var(--color-light-xl);
+    }
+
+    .menu.menu-active {
+        right: 0;
+    }
+
+    .menu-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+        height: 100%;
+        margin: 120px 0;
+        padding: 0 30px 30px;
+        overflow-y: auto;
+    }
+
+    .menu-list li {
+        margin-left: 0;
+        padding: 8px 0;
+    }
+
+    .menu-list a {
+        font-size: 32px;
+    }
+
+    .logo.move {
+        left: calc(100% - 255px);
+    }
+
+    .our-friends-content {
+        gap: 45px;
+    }
+
+    .not-only-content {
+        padding: 150px 10px 0 10px;
+    }
+
+    .not-only-img {
+        max-width: 260px;
+    }
+
+    .slider {
+        flex-wrap: wrap;
+        width: 300px;
+        margin: 0 auto;
+    }
+
+    button.slider-btn {
+        order: 10;
+        margin: 0 38px;
+    }
+
+    .slider-wrapper {
+        width: 270px;
+    }
+
+    .slider-carousel {
+        left: -270px;
+    }
+
+    .card-center {
+        display: none;
+    }
+
+    .make-donation {
+        align-items: center;
+    }
+
+    .footer-content {
+        padding-bottom: 0;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+
+    .our-friends-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-locations,
+    .footer-contacts {
+        height: 210px;
+    }
+}
