@@ -59,3 +59,7 @@ button.current:hover {
     color: var(--color-dark-3xl);
     border: 2px solid var(--color-primary);
 }
+
+.pets-location {
+    margin-top: 10px;
+}
