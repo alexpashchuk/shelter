@@ -15,9 +15,6 @@ export const Burger = () => {
     };
 
     const closeMenu = () => {
-        // const clickMenu = e.composedPath().includes(menu);
-        // const clickBurger = e.composedPath().includes(burger);
-        // const clickMask = e.composedPath().includes(mask);
         burger.classList.remove('rotate');
         logo.classList.remove('move');
         menu.classList.remove('menu-active');

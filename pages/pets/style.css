@@ -1,5 +1,4 @@
 /* Header */
-
 .header.pets-header {
     top: 30px;
 }
@@ -35,8 +34,7 @@
 }
 
 /* Our friends Pagination*/
-
-.our-friends-content {
+.our-friends-content-pets {
     margin-top: 120px;
 }
 
@@ -58,8 +56,4 @@ button.current:hover {
     background-color: var(--color-primary);
     color: var(--color-dark-3xl);
     border: 2px solid var(--color-primary);
-}
-
-.pets-location {
-    margin-top: 10px;
 }

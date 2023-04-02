@@ -1,5 +1,4 @@
 /* Not-only */
-
 .not-only {
     background-image: url(../../assets/images/start-screen-gradient-background.png);
     background-repeat: no-repeat;
@@ -31,7 +30,6 @@
 }
 
 /* About */
-
 .about-content {
     display: flex;
     justify-content: center;
@@ -48,7 +46,6 @@
 }
 
 /* Our Friends Slider */
-
 .slider {
     display: flex;
     justify-content: center;
@@ -75,7 +72,6 @@
 }
 
 /* Help */
-
 .help-content {
     flex-direction: column;
     flex-wrap: nowrap;
@@ -103,7 +99,6 @@
 }
 
 /* Donation */
-
 .donation {
     background-color: var(--color-light-l);
 }
