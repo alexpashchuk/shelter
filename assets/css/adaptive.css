@@ -9,7 +9,6 @@
 
     /* Not-only */
     .not-only-content {
-        flex-direction: column;
         align-items: center;
         gap: 100px;
         padding: 150px 20px 0 20px;
@@ -30,7 +29,7 @@
 
     /* About */
     .about-content {
-        flex-direction: column-reverse;
+        /*flex-direction: column-reverse;*/
         gap: 80px;
     }
 
@@ -70,13 +69,13 @@
 
     /* Donation */
     .donation-content {
-        flex-direction: column-reverse;
+        /*flex-direction: column-reverse;*/
         gap: 60px;
     }
 
     /* Footer */
     .footer-content {
-        max-width: 900px;
+        /*max-width: 900px;*/
         padding-top: 17px;
         padding-bottom: 0;
         gap: 60px;
@@ -125,6 +124,24 @@
         font-size: 13px;
         line-height: 110%;
         margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 1023px) {
+    .not-only-content {
+        flex-direction: column;
+    }
+
+    .about-content {
+        flex-direction: column-reverse;
+    }
+
+    .donation-content {
+        flex-direction: column-reverse;
+    }
+
+    .footer-content {
+        max-width: 900px;
     }
 }
 

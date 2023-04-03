@@ -46,6 +46,7 @@ html {
     -ms-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
+    overflow-x: hidden;
 }
 
 body.lock {
@@ -387,6 +388,7 @@ button.close {
     display: flex;
     gap: 159px;
     justify-content: center;
+    /*justify-content: space-between;*/
     align-items: flex-start;
     flex-wrap: wrap;
     padding-top: 40px;
@@ -418,6 +420,10 @@ button.close {
     align-items: center;
     gap: 20px;
     min-height: 46px;
+}
+
+.footer-img {
+    max-width: 300px;
 }
 
 /* Mask */
