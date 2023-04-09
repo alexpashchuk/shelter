@@ -49,8 +49,8 @@ html {
     overflow-x: hidden;
 }
 
-body.lock {
-    overflow-y: hidden;
+html.lock {
+    overflow: hidden;
 }
 
 * {
@@ -250,7 +250,7 @@ button.close {
 .logo {
     position: relative;
     left: 0;
-    z-index: 25;
+    /*z-index: 25;*/
     transition: left 0.4s;
     white-space: nowrap;
 }
@@ -492,7 +492,7 @@ button.close {
 
 .modal-content {
     display: flex;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
     width: 900px;
     height: auto;
     border-radius: 9px;
@@ -510,8 +510,8 @@ button.close {
 .modal-info {
     display: flex;
     flex-direction: column;
-    width: 351px;
-    padding: 50px 20px 45px 30px;
+    /*width: 351px;*/
+    padding: 12px 20px 45px 30px;
 }
 
 .modal-info > h3 {
@@ -528,6 +528,7 @@ button.close {
 
 .modal-info > ul {
     font-weight: 700;
+    margin-left: 12px;
 }
 
 .modal-info > ul > li:not(:last-child) {

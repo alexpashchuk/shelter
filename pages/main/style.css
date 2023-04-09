@@ -59,9 +59,40 @@
 
 .slider-carousel {
     position: relative;
-    left: -990px;
+    left: -1030px;
     display: flex;
     justify-content: space-between;
+    gap: 40px;
+}
+
+@keyframes move-right {
+    from {
+        left: -1030px;
+    }
+
+    to {
+        left: -2060px;
+    }
+}
+
+.transition-right {
+    animation-name: move-right;
+    animation-duration: 1s;
+}
+
+@keyframes move-left {
+    from {
+        left: -1030px;
+    }
+
+    to {
+        left: 0;
+    }
+}
+
+.transition-left {
+    animation-name: move-left;
+    animation-duration: 1s;
 }
 
 .slider-slide {

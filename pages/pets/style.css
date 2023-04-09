@@ -50,6 +50,10 @@
     gap: 20px;
 }
 
+.our-friends-cards > .card-pets:not(:nth-of-type(-n + 8)) {
+    display: none;
+}
+
 button.current,
 button.current:hover {
     cursor: default;

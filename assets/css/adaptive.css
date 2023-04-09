@@ -43,16 +43,40 @@
     }
 
     .slider-carousel {
-        left: -580px;
+        left: -620px;
+    }
+
+    @keyframes move-right {
+        from {
+            left: -620px;
+        }
+
+        to {
+            left: -1240px;
+        }
+    }
+
+    @keyframes move-left {
+        from {
+            left: -620px;
+        }
+
+        to {
+            left: 0;
+        }
     }
 
     .slider-slide {
         gap: 40px;
     }
 
-    .card-right {
+    .slider-slide > .card-pets:nth-child(3) {
         display: none;
     }
+
+    /*.card-right {*/
+    /*    display: none;*/
+    /*}*/
 
     /* Help */
     .help-content {
@@ -92,7 +116,7 @@
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .card-pets:not(:nth-of-type(-n + 6)) {
+    .our-friends-cards > .card-pets:not(:nth-of-type(-n + 6)) {
         display: none;
     }
 
@@ -112,8 +136,8 @@
     }
 
     .modal-info {
-        width: 265px;
-        padding: 10px 9px 10px 11px;
+        /*width: 265px;*/
+        padding: 10px 9px 30px 11px;
     }
 
     .modal-info > h4 {
@@ -124,6 +148,10 @@
         font-size: 13px;
         line-height: 110%;
         margin-bottom: 20px;
+    }
+
+    .modal-info > ul > li:not(:last-child) {
+        margin-bottom: 5px;
     }
 }
 
@@ -195,8 +223,8 @@
         align-items: center;
         gap: 25px;
         height: 100%;
-        margin: 120px 0;
-        padding: 0 30px 30px;
+        /*margin: 120px 0;*/
+        padding: 0 30px;
         overflow-y: auto;
     }
 
@@ -273,12 +301,36 @@
     }
 
     .slider-carousel {
-        left: -270px;
+        left: -310px;
     }
 
-    .card-center {
+    @keyframes move-right {
+        from {
+            left: -310px;
+        }
+
+        to {
+            left: -620px;
+        }
+    }
+
+    @keyframes move-left {
+        from {
+            left: -310px;
+        }
+
+        to {
+            left: 0;
+        }
+    }
+
+    .slider-slide > .card-pets:nth-child(2) {
         display: none;
     }
+
+    /*.card-center {*/
+    /*    display: none;*/
+    /*}*/
 
     /* Help */
     .help-content {
@@ -381,7 +433,7 @@
         grid-template-columns: 1fr;
     }
 
-    .card-pets:not(:nth-of-type(-n + 3)) {
+    .our-friends-cards > .card-pets:not(:nth-of-type(-n + 3)) {
         display: none;
     }
 
@@ -412,5 +464,13 @@
     .modal-info > h5 {
         margin-bottom: 24px;
         text-align: justify;
+    }
+
+    .modal-info > h4 {
+        text-align: center;
+    }
+
+    .modal-info > h3 {
+        font-size: 35px;
     }
 }
