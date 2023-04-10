@@ -4,24 +4,63 @@ const slideActive = document.querySelector('#slide-active');
 const slideRight = document.querySelector('#slide-right');
 const btnLeft = document.querySelector('#slider-btn-left');
 const btnRight = document.querySelector('#slider-btn-right');
-const desktop = window.matchMedia('(min-width: 1280px)');
-const tablet = window.matchMedia('(max-width: 1279px) and (min-width: 768px)');
 
 const response = await fetch('../../assets/data/pets.json');
 const pets = await response.json();
 
 window.addEventListener('load', () => {
-    resizeCards();
+    initSlider(pets);
 });
 
-window.addEventListener('resize', () => {
-    resizeCards();
-});
+let direction;
+let activeArr;
+let sortedArray = [];
 
-const createCardTemplate = (slideItems, petCard) => {
+const getSortedArray = (petsArr) => {
+    let initArr = [];
+    let nextArr = [];
+    let currArr = [];
+    let pastArr = [];
+
+    if (!activeArr) {
+        petsArr.forEach((_, i) => initArr.push(i));
+        initArr
+            .sort(() => Math.random() - 0.5)
+            .forEach((el, index) => {
+                index < 3 ? currArr.push(el) : null;
+            });
+    } else {
+        currArr = activeArr;
+    }
+
+    const getSortSlides = (petsArr) => {
+        for (let index = 0; index < 3; index++) {
+            let num = Math.floor(Math.random() * 8);
+            while (petsArr.includes(num) || currArr.includes(num)) {
+                num = Math.floor(Math.random() * 8);
+            }
+            petsArr.push(num);
+        }
+    };
+
+    if (direction !== 'right') {
+        getSortSlides(nextArr);
+    } else {
+        nextArr = petsArr.slice(3, 6);
+    }
+    if (direction !== 'left') {
+        getSortSlides(pastArr);
+    } else {
+        pastArr = petsArr.slice(3, 6);
+    }
+
+    return [...pastArr, ...currArr, ...nextArr];
+};
+
+const createCardTemplate = (slideItem, petCard, isReplace) => {
     const { img, name, type } = petCard || {};
     const card = document.createElement('div');
-    slideItems.appendChild(card);
+    isReplace ? slideItem.replaceWith(card) : slideItem.append(card);
     card.outerHTML = `<div class="card-pets" data-name="${name}">
         <img src="${img}" alt="${type} ${name}" width="270" height="270">
             <h4>${name}</h4>
@@ -29,84 +68,34 @@ const createCardTemplate = (slideItems, petCard) => {
     </div>`;
 };
 
-let arr = [];
+const initSlider = () => {
+    sortedArray = getSortedArray(pets);
 
-let startArray = Array.from({ length: 8 })
-    .fill(null)
-    .map((_, index) => index)
-    .sort(() => Math.random() - 0.5);
-
-const resizeCards = () => {
-    arr = [...startArray];
-    if (desktop.matches) {
-        // countCards = 3;
-        arr.splice(3);
-    } else if (tablet.matches) {
-        // countCards = 2;
-        arr.splice(2);
-    } else {
-        // countCards = 1;
-        arr.splice(1);
-    }
-    while (slideActive.firstChild || slideLeft.firstChild || slideRight.firstChild) {
-        slideActive.removeChild(slideActive.firstChild);
-        slideLeft.removeChild(slideLeft.firstChild);
-        slideRight.removeChild(slideRight.firstChild);
-    }
-    createActiveSlider();
-    createLeftRightSlide();
-    // createLeftSlide();
-    // createRightSlide();
-};
-
-const createActiveSlider = () => {
-    arr.forEach((item) => createCardTemplate(slideActive, pets[item]));
-};
-
-let randomArrLeft;
-let randomArrRight;
-const getRandomArrLeft = () => {
-    randomArrLeft = [...arr];
-    while (randomArrLeft.length < arr.length * 2) {
-        let index = Math.floor(Math.random() * 8);
-        if (!randomArrLeft.includes(index)) {
-            randomArrLeft.push(index);
+    sortedArray.forEach((_, i) => {
+        if (i < 3) {
+            createCardTemplate(slideLeft, pets[sortedArray[i]], false);
+        } else if (i > 5) {
+            createCardTemplate(slideRight, pets[sortedArray[i]], false);
+        } else {
+            createCardTemplate(slideActive, pets[sortedArray[i]], false);
         }
-    }
-    randomArrLeft.splice(0, arr.length);
-};
-
-const getRandomArrRight = () => {
-    randomArrRight = [...arr];
-    while (randomArrRight.length < arr.length * 2) {
-        let index = Math.floor(Math.random() * 8);
-        if (!randomArrRight.includes(index)) {
-            randomArrRight.push(index);
-        }
-    }
-    randomArrRight.splice(0, arr.length);
-};
-
-const createLeftRightSlide = () => {
-    getRandomArrLeft();
-    getRandomArrRight();
-    randomArrRight.forEach((item) => {
-        createCardTemplate(slideRight, pets[item]);
     });
-    randomArrLeft.forEach((item) => {
-        createCardTemplate(slideLeft, pets[item]);
+};
+
+const updateSlider = () => {
+    const cards = carousel.querySelectorAll('.card-pets');
+    cards.forEach((item, i) => {
+        createCardTemplate(item, pets[sortedArray[i]], true);
     });
 };
 
 const moveLeft = () => {
-    arr = randomArrLeft;
     carousel.classList.add('transition-left');
     btnLeft.removeEventListener('click', moveLeft);
     btnRight.removeEventListener('click', moveRight);
 };
 
 const moveRight = () => {
-    arr = randomArrRight;
     carousel.classList.add('transition-right');
     btnRight.removeEventListener('click', moveRight);
     btnLeft.removeEventListener('click', moveLeft);
@@ -119,16 +108,17 @@ carousel.addEventListener('animationend', (event) => {
     if (event.animationName === 'move-left') {
         carousel.classList.remove('transition-left');
         slideActive.innerHTML = slideLeft.innerHTML;
-        slideLeft.innerHTML = '';
-        slideRight.innerHTML = '';
-        createLeftRightSlide();
+        direction = 'right';
+        activeArr = sortedArray.slice(0, 3);
     } else {
         carousel.classList.remove('transition-right');
         slideActive.innerHTML = slideRight.innerHTML;
-        slideLeft.innerHTML = '';
-        slideRight.innerHTML = '';
-        createLeftRightSlide();
+        direction = 'left';
+        activeArr = sortedArray.slice(-3);
     }
+
+    sortedArray = getSortedArray(sortedArray);
+    updateSlider();
 
     btnLeft.addEventListener('click', moveLeft);
     btnRight.addEventListener('click', moveRight);

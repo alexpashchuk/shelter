@@ -10,7 +10,7 @@ const html = document.querySelector('html');
 
 sliderCarousel.addEventListener('click', (event) => {
     if (event.target.closest('.card-pets')) {
-        // let indexPets = event.target.closest('.card-pets').dataset.modalIndex;
+        // let dataName = event.target.closest('.card-pets').dataset.name;
         let itemPets = pets.find((item) => item.name === event.target.closest('.card-pets').dataset.name);
         createModal(itemPets);
         mask.classList.add('mask-active');
