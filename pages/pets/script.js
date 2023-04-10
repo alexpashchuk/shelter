@@ -5,7 +5,7 @@ const currentBtn = document.querySelector('#current');
 const nextBtn = document.querySelector('#next');
 const lastBtn = document.querySelector('#end');
 const desktop = window.matchMedia('(min-width: 1280px)');
-const tablet = window.matchMedia('(max-width: 1279px) and (min-width: 768px)');
+const phone = window.matchMedia('(max-width: 767px)');
 
 const response = await fetch('../../assets/data/pets.json');
 const pets = await response.json();
@@ -27,23 +27,59 @@ const getRandomArr = () => {
 getRandomArr();
 
 window.addEventListener('load', () => {
+    createPaginationCards(arr);
     resizeCards();
+    disableBtn(page);
 });
 
-window.addEventListener('resize', () => {
-    resizeCards();
+desktop.addEventListener('change', (event) => {
+    if (event.matches) {
+        // window >= 1280
+        // console.log('window >= 1280');
+        countPage = 6;
+        cards = 8;
+        createPaginationCards(arr);
+    } else {
+        // window < 1280
+        // console.log('window < 1280 ');
+        countPage = 8;
+        cards = 6;
+        createPaginationCards(arr);
+    }
+});
+
+phone.addEventListener('change', (event) => {
+    if (event.matches) {
+        // window < 768
+        // console.log('window < 768');
+        countPage = 16;
+        cards = 3;
+        createPaginationCards(arr);
+    } else {
+        //  window >= 768
+        // console.log('window >= 768 ');
+        countPage = 8;
+        cards = 6;
+        createPaginationCards(arr);
+    }
 });
 
 const resizeCards = () => {
-    if (desktop.matches) {
-        countPage = 6;
-        cards = 8;
-    } else if (tablet.matches) {
-        countPage = 8;
-        cards = 6;
-    } else {
+    if (phone.matches) {
+        // window < 768
+        // console.log('phone');
         countPage = 16;
         cards = 3;
+    } else if (desktop.matches) {
+        // window >= 1280
+        // console.log('desktop');
+        countPage = 6;
+        cards = 8;
+    } else {
+        // 768 <= window < 1280
+        // console.log('tablet');
+        countPage = 8;
+        cards = 6;
     }
 
     createPaginationCards(arr);
@@ -89,6 +125,7 @@ const createPaginationCards = (arr) => {
     paginationRoot.innerHTML = '';
     let currentArr = arr.slice(cards * page - cards, cards * page);
     currentArr.forEach((_, i) => createCardTemplate(paginationRoot, currentArr[i]));
+    disableBtn(page);
 };
 
 const disableBtn = (page) => {
