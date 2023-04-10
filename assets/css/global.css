@@ -552,10 +552,10 @@ button.close {
     margin-left: -1em;
 }
 
-.modal:hover button.close {
-    background-color: var(--color-primary-light);
-    border: 2px solid var(--color-primary-light);
-}
+/*.modal:hover button.close {*/
+/*    background-color: var(--color-primary-light);*/
+/*    border: 2px solid var(--color-primary-light);*/
+/*}*/
 
 .modal-window:hover button.close:not(:hover) {
     background-color: transparent;
