@@ -5,7 +5,7 @@ Project with pagination and slider consisting of two pages.
 
 ## Deploy
 
-https://alexpashchuk-shelter.netlify.app
+https://alexpashchuk.github.io/shelter/pages/main/
 
 ### Used technologies
 
@@ -15,4 +15,4 @@ https://alexpashchuk-shelter.netlify.app
 
 ## Screenshot
 
-![screenshot.png](/assets/images/app.png "shelter-app")
+![screenshot.png](/assets/images/app.png "shelter")
