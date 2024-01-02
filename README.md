@@ -9,8 +9,9 @@ https://alexpashchuk.github.io/shelter/pages/main/
 
 ### Used technologies
 
-- JavaScript
+- HTML
 - CSS
+- JavaScript
 - Webpack
 
 ## Screenshot
